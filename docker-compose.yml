@@ -1,0 +1,52 @@
+services:
+
+  db:
+    image: postgres:16-alpine
+    container_name: stageit-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: stageit
+      POSTGRES_USER: stageit
+      POSTGRES_PASSWORD: stageitpass
+    volumes:
+      - stageit-db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stageit -d stageit"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./stageit-backend
+      dockerfile: Dockerfile
+    container_name: stageit-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/stageit
+      SPRING_DATASOURCE_USERNAME: stageit
+      SPRING_DATASOURCE_PASSWORD: stageitpass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./stageit-frontend
+      dockerfile: Dockerfile
+    container_name: stageit-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  stageit-db-data:

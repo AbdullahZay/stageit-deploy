@@ -1,0 +1,6 @@
+[submodule "stageit-backend"]
+	path = stageit-backend
+	url = https://github.com/AbdullahZay/stageit-backend.git
+[submodule "stageit-frontend"]
+	path = stageit-frontend
+	url = https://github.com/AbdullahZay/stageit-frontend.git
