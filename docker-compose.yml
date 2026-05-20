@@ -1,5 +1,4 @@
-services:
-
+﻿services:
   db:
     image: postgres:16-alpine
     container_name: stageit-db
@@ -17,7 +16,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
-
   backend:
     build:
       context: ./stageit-backend
@@ -34,9 +32,10 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
       SERVER_PORT: 8080
+      JWT_SECRET: my-super-secret-jwt-key-that-should-be-at-least-256-bits-long-for-hs256-algorithm
+      JWT_EXPIRATION: 86400000
     ports:
       - "8080:8080"
-
   frontend:
     build:
       context: ./stageit-frontend
@@ -47,6 +46,5 @@ services:
       - backend
     ports:
       - "3000:80"
-
 volumes:
   stageit-db-data:
