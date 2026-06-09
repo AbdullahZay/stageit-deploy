@@ -115,6 +115,32 @@ Each repository maintains its own **GitHub Projects Kanban board** for tracking 
 
 ---
 
+## Screenshots
+
+Register Page:
+<img width="2556" height="1311" alt="image" src="https://github.com/user-attachments/assets/de6f5612-ef95-469b-8c04-21f521af7e42" />
+
+Login Page:
+<img width="2560" height="1310" alt="image" src="https://github.com/user-attachments/assets/1802f4f9-ec8a-4614-84d6-da794db7394f" />
+
+Create Post Page:
+<img width="2560" height="1312" alt="image" src="https://github.com/user-attachments/assets/df58271f-ced6-4248-ab70-798512c9f5c3" />
+
+Post Page:
+<img width="2560" height="1306" alt="image" src="https://github.com/user-attachments/assets/c21f6146-d0fd-47e0-9e9b-e8bfa566217c" />
+
+Main Page:
+<img width="2560" height="1311" alt="image" src="https://github.com/user-attachments/assets/596375a5-68e4-4abd-9173-711fee91f43e" />
+
+---
+
+## AI-Usage
+
+Used AI for debugging the code when not working probably. 
+Also used it as an instructor for the new things that I did not used and implements something like before.
+
+---
+
 ## Summary
 
 **StageIt** is a full-stack web platform that gives indie game developers a stage to showcase their work and helps gamers discover hidden gems from creators who haven't yet hit the spotlight. The project demonstrates a complete production-grade architecture: 
